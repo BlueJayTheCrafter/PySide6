@@ -30,11 +30,11 @@ class MainWindow(QMainWindow):
         # TODO: add a text input for an equation
         self.num_input = QLineEdit(placeholderText="Add Equation")
 
-        # TODO: add a push button to greet user
+        # TODO: add a push button to give the sum
         submit_button = QPushButton("Submit")
         submit_button.clicked.connect(self.get_input)
 
-        # TODO: add a label to greet user
+        # TODO: add instructions for the user
         self.instructions = "Enter an equation, then click the button."
         self.output_label = QLabel(self.instructions)
         self.output_label.setWordWrap(True)
