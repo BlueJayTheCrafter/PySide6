@@ -56,7 +56,7 @@ class MainWindow(QMainWindow):
 
     def get_input(self):
         """grab input, process input, dicplay output"""
-        output = ""
+        output = sum
         num = self.num_input.text()
 
         if not num:
