@@ -55,7 +55,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
 
     def get_input(self):
-        """grab input, process input, dicplay output"""
+        """grab input, process input, display output"""
         output = sum
         num = self.num_input.text()
 
