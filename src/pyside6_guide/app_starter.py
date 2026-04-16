@@ -56,14 +56,16 @@ class MainWindow(QMainWindow):
 
     def get_input(self):
         """grab input, process input, display output"""
-        output = ""
         num = self.num_input.text()
 
         if not num:
-            output = "WARNING: you did not enter an equation. Please enter "
-            output += "an equation."
+            output = "WARNING: you did not enter an equation. Please enter an equation."
         else:
-            output = f"Your answer is {num}."
+            try:
+                num = eval(num)
+                output = f"Your answer is {num}."
+            except:
+                output = "Invalid input! Please enter a valid equation."
         self.output_label.setText(output)
 
 if __name__ == "__main__":
