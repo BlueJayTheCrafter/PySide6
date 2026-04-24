@@ -7,6 +7,10 @@ A demo of the most basic input/output: labels, text inputs, and buttons.
 import sys
 from PySide6.QtWidgets import (
     QApplication,
+    QSpinBox,
+    QDoubleSpinBox,
+    QComboBox,
+    QHBoxLayout,
     QLabel,
     QLineEdit,
     QMainWindow,
@@ -30,6 +34,24 @@ class MainWindow(QMainWindow):
         # TODO: add a text input for user's name
         self.name_input = QLineEdit(placeholderText="Name")
 
+        # TODO: add one or more horizontal layouts with widgets side by side
+        age_layout = QHBoxLayout()
+        age_label = QLabel("Age: ")
+        self.age_spinbox = QSpinBox()
+        self.age_spinbox.setValue(5)
+        self.age_spinbox.setMinimum(1)
+        self.age_spinbox.setMaximum(125)
+        self.age_spinbox.setSingleStep(1)
+        age_layout.addWidget(age_label)
+        age_layout.addWidget(self.age_spinbox)
+
+        money_layout = QHBoxLayout()
+        money_label = QLabel("Total price: ")
+        self.money_spinbox = QDoubleSpinBox()
+        self.money_spinbox.setPrefix("$ ")
+        money_layout.addWidget(money_label)
+        money_layout.addWidget(self.money_spinbox)
+
         # TODO: add a push button to greet user
         submit_button = QPushButton("Submit")
         submit_button.clicked.connect(self.get_input)
@@ -50,6 +72,8 @@ class MainWindow(QMainWindow):
         # add widgets & layouts to main layout
         layout.addWidget(title_label)
         layout.addWidget(self.name_input)
+        layout.addLayout(age_layout)
+        layout.addLayout(money_layout)
         layout.addWidget(submit_button)
         layout.addWidget(self.output_label)
 
@@ -66,12 +90,15 @@ class MainWindow(QMainWindow):
         """grab input, process input, dicplay output"""
         output = ""
         name = self.name_input.text()
+        age = self.age_spinbox.value()
+        money_string = self.money_spinbox.text()
+        money = self.money_spinbox.value()
 
         if not name:
             output = "WARNING: you did not enter your name. Please enter "
             output += "your name."
         else:
-            output = f"You entered {name} as your name."
+            output = f"You entered {name} to be your son or daughter and {age} as their age."
         self.output_label.setText(output)
 
 if __name__ == "__main__":
